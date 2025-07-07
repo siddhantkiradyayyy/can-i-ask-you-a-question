@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Yog 💖 From Siddhant</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile scaling -->
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
@@ -98,6 +98,28 @@
       100% { transform: translateY(-200px) scale(0.9); opacity: 0; }
     }
 
+    .soft-image {
+      max-width: 90%;
+      border-radius: 16px;
+      border: 3px solid #ffd6ec;
+      box-shadow: 0 0 25px #ffc3e080;
+      margin: 20px 0;
+      transition: all 1s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .soft-image.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gif-divider {
+      width: 140px;
+      margin: 30px 0;
+      animation: floaty 3s ease-in-out infinite;
+    }
+
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -106,19 +128,10 @@
     }
 
     @media (max-width: 480px) {
-      h1 {
-        font-size: 2.2em;
-      }
-      h2 {
-        font-size: 1.5em;
-      }
-      p {
-        font-size: 1em;
-      }
-      .button {
-        font-size: 1em;
-        padding: 12px 24px;
-      }
+      h1 { font-size: 2.2em; }
+      h2 { font-size: 1.5em; }
+      p { font-size: 1em; }
+      .button { font-size: 1em; padding: 12px 24px; }
     }
   </style>
 </head>
@@ -146,6 +159,7 @@
 
 <section class="reveal">
   <h2>Picture this...</h2>
+  <img src="15_Museum_Story_vb.jpg" class="soft-image" alt="Museum Interior" />
   <p>You and me, brushing shoulders 😳, wandering through the <strong>Chhatrapati Shivaji Maharaj Vastu Sangrahalaya</strong></p>
   <p>Lost in art, history, and secret glances 🗿🎨💫</p>
 </section>
@@ -157,8 +171,10 @@
 </section>
 
 <section class="reveal">
+  <img src="8da8527a09173de110b9b7b61d4b266f.gif" alt="Pixel Heart Divider" class="gif-divider" />
   <h2>So... Yog 🥺</h2>
   <p>Will you go on a museum date with me this weekend?</p>
+  <img src="pngtree-golden-retriever-dog-pictures-png-image_15147078.png" class="soft-image" alt="Puppy" />
   <button class="button" onclick="sayYes()">YES, Siddhant 😳💗</button>
 </section>
 
@@ -180,6 +196,8 @@
   }
 
   const sections = document.querySelectorAll('.reveal');
+  const images = document.querySelectorAll('.soft-image');
+
   const revealOnScroll = () => {
     const trigger = window.innerHeight * 0.8;
     sections.forEach(sec => {
@@ -188,7 +206,14 @@
         sec.classList.add('visible');
       }
     });
+    images.forEach(img => {
+      const rect = img.getBoundingClientRect();
+      if (rect.top < trigger) {
+        img.classList.add('visible');
+      }
+    });
   };
+
   window.addEventListener('scroll', revealOnScroll);
   revealOnScroll();
 </script>
