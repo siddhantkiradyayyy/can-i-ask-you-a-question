@@ -2,233 +2,176 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Yog 💖 From Siddhant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+  <title>Dearest Yog... 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Old+Standard+TT&display=swap" rel="stylesheet">
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      font-family: 'Indie Flower', cursive;
-      background: linear-gradient(135deg, #fbefff, #e0f7fa);
-      scroll-behavior: smooth;
+      font-family: 'Old Standard TT', serif;
+      background: #f9f6f2;
+      color: #3c2a1e;
       overflow-x: hidden;
     }
 
-    section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 20px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-      box-sizing: border-box;
+    .scene {
+      display: none;
+      padding: 80px 20px;
       text-align: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      position: relative;
+      background: radial-gradient(#f9f6f2, #f4e9df);
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .scene.active {
+      display: block;
+      animation: fadeIn 1s ease forwards;
     }
 
-    h1 {
-      font-size: 2.5em;
-      color: #ff69b4;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    h2 {
-      font-size: 1.8em;
-      color: #444;
-      margin-top: 0;
+    h1, h2 {
+      font-family: 'Monsieur La Doulaise', cursive;
+      font-size: 3em;
+      color: #5c3a61;
+      margin-bottom: 0.4em;
     }
 
     p {
-      font-size: 1.2em;
-      color: #444;
-      max-width: 90%;
+      font-size: 1.15em;
+      max-width: 720px;
+      margin: 0 auto 1.8em;
+      line-height: 1.9em;
+      color: #3c2a1e;
     }
 
-    .emoji {
-      font-size: 2em;
-      animation: floaty 3s ease-in-out infinite;
-    }
-
-    .button {
-      background-color: #ffd6ec;
-      color: #333;
+    .next-button {
+      font-size: 1em;
+      padding: 12px 28px;
+      background-color: #decad8;
       border: none;
-      padding: 14px 28px;
-      margin-top: 30px;
       border-radius: 30px;
-      font-size: 1.2em;
+      font-family: 'Old Standard TT', serif;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      color: #3c2a1e;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    .button:hover {
-      background-color: #ffc3e0;
-      transform: scale(1.05);
-    }
-
-    .heart {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Emoji_u2764.svg/32px-Emoji_u2764.svg.png') no-repeat center/contain;
-      animation: float 6s infinite ease-in;
-      opacity: 0.7;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 0.8; }
-      50% { transform: translateY(-100px) scale(1.2); opacity: 0.5; }
-      100% { transform: translateY(-200px) scale(0.9); opacity: 0; }
+    .next-button:hover {
+      background-color: #cfaed1;
     }
 
     .soft-image {
-      max-width: 90%;
-      border-radius: 16px;
-      border: 3px solid #ffd6ec;
-      box-shadow: 0 0 25px #ffc3e080;
+      max-width: 80%;
+      border-radius: 20px;
+      border: 3px solid #e5d6e0;
+      box-shadow: 0 0 25px #e5d6e080;
       margin: 20px 0;
-      transition: all 1s ease;
-      opacity: 0;
-      transform: translateY(30px);
+      animation: fadeIn 2s ease forwards;
     }
 
-    .soft-image.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .yes-button {
+      font-size: 1.2em;
+      padding: 16px 36px;
+      background-color: #ede2ef;
+      border: 2px solid #5c3a61;
+      border-radius: 40px;
+      font-family: 'Monsieur La Doulaise', cursive;
+      cursor: pointer;
+      color: #5c3a61;
+      box-shadow: 0 0 12px #e2cde8;
+      animation: float 2s ease-in-out infinite;
     }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 1em;
-      color: #777;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
 
-    @media (max-width: 480px) {
-      h1 { font-size: 2.2em; }
-      h2 { font-size: 1.5em; }
-      p { font-size: 1em; }
-      .button { font-size: 1em; padding: 12px 24px; }
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #efd2e7;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0); opacity: 0.8; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-<script>
-  function createHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.top = '100vh';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-  }
-  setInterval(createHeart, 500);
-</script>
+  <div class="scene active" id="scene1">
+    <h1>Dear Yog,</h1>
+    <p>We have yet to share a moment in the same room, yet you already occupy a small chamber of my mind. There is a devious particular charm to the mystery of it all that has thrilled me. I thrill in how little I know and yet how much I can imagine. The way you speak about things that you care of lingers with me reminiscent of a page turned too soon. I do not claim to possess knowledge of that which you are, only that the idea of you feels inexplicably lovely and leaves me in delirium. If this note brings forth even the hint of a smile to your day, then I shall consider it quite a victory.</p>
+    <p>With curiosity and hope,<br> Siddhant</p>
+    <button class="next-button" onclick="nextScene(2)">Turn the page 📖</button>
+  </div>
 
-<!-- Sections -->
-<section class="reveal">
-  <h1>Hey Yog 💖</h1>
-  <p class="emoji">🐾✨💌</p>
-  <p>It’s Siddhant. Your crush. Whose voice melts you like ice cream in the Mumbai sun 🍦😳</p>
-  <img src="38838d2369fe10f9e3f03e92bde4883c.gif" class="soft-image" alt="Waving puppy" />
-</section>
+  <div class="scene" id="scene2">
+    <h2>A Thought, A Walk</h2>
+    <p>Permit me while I indulge in my imagination of the two of us. We walk unhurried steps through a museum, glancing at art older than our names, speaking in quiet tones because we dare not disturb their sleep. I wonder what would catch your eye. I wonder if I would notice you more than the art. I rather think I would.</p>
+    <img src="15_Museum_Story_vb.jpg" class="soft-image" alt="Museum" />
+    <button class="next-button" onclick="nextScene(4)">Continue 💗</button>
+  </div>
 
-<section class="reveal">
-  <h2>Picture this...</h2>
-  <img src="15_Museum_Story_vb.jpg" class="soft-image" alt="Museum Interior" />
-  <p>You and me, brushing shoulders 😳, wandering through the <strong>Chhatrapati Shivaji Maharaj Vastu Sangrahalaya</strong></p>
-  <p>Lost in art, history, and secret glances 🗿🎨💫</p>
-</section>
+  <div class="scene" id="scene4">
+    <h2>Some Future Afternoon</h2>
+    <p>Once you have laid down your pen that you lift in the pursuit of knowledge, and your scholarly activities have slightly paused and allowed you time to breathe, might we take a day together of promenade? I wish not for grand declarations but a quiet moment of peace and shared mirth and joy with you. You shall not be expected to charm, you shall only expected to be charmed.</p>
+    <img src="85311f39e674454dfc7fc12fd6ce01d7.gif" class="soft-image" alt="Food hamster" />
+    <button class="next-button" onclick="nextScene(5)">More, if you please</button>
+  </div>
 
-<section class="reveal">
-  <h2>After that?</h2>
-  <p>We eat! Somewhere cozy, maybe messy, definitely cute 🍜🍕🍰</p>
-  <img src="85311f39e674454dfc7fc12fd6ce01d7.gif" class="soft-image" alt="Hamster eating fries" />
-</section>
+  <div class="scene" id="scene5">
+    <h2>A Bite and a Banter</h2>
+    <p>Let us not forget a meal. For if you are famished, we would replenish ourselves with a fine delight - whether it be rich or fried. I would also replenish myself with your smile. And should the moment allow, I may offer a line or two not unlike a compliment, if only to make you blush - gently, of course.</p>
+    <img src="a57bf940269ffbf167f8b0c5fd50315c.gif" class="soft-image" alt="Dancing dog" />
+    <button class="next-button" onclick="nextScene(6)">Just one more</button>
+  </div>
 
-<section class="reveal">
-  <h2>So... Yog 🥺</h2>
-  <p>Will you go on a museum date with me this weekend?</p>
-  <img src="source.gif" class="soft-image" alt="Corgi asking" />
-  <img src="8da8527a09173de110b9b7b61d4b266f.gif" class="soft-image" alt="Pixel heart divider" />
-  <img src="pngtree-golden-retriever-dog-pictures-png-image_15147078.png" class="soft-image" alt="Puppy with eyes" />
-  <button class="button" onclick="sayYes()">YES, Siddhant 😳💗</button>
-</section>
+  <div class="scene" id="scene6">
+    <h2>A Proposal of Lighthearted Kind</h2>
+    <p>Would you, once your schedule is yours again, accompany me to the Chhatrapati Shivaji Maharaj Vastu Sangrahalaya for a gentle adventure? No strings, no demands, only a shared curiosity and a fondness for the soft possibility of becoming acquainted, properly and in person.</p>
+    <img src="source.gif" class="soft-image" alt="Corgi asking" />
+    <br><br>
+    <button class="yes-button" onclick="sayYes()">Yes, I should like that 🕊️</button>
+  </div>
 
-<section class="reveal" id="yesResponse" style="display:none;">
-  <h2>I KNEW IT 😌💞</h2>
-  <p>You just made my whole week ✨</p>
-  <img src="a57bf940269ffbf167f8b0c5fd50315c.gif" class="soft-image" alt="Happy pixel dog" />
-  <p>Text me what day you're free, I’ll take care of the rest 💌</p>
-  <p class="emoji">🎟️📸🌆🍜❤️</p>
-</section>
+  <div class="scene" id="scene7">
+    <h2>What a Lovely Thing</h2>
+    <p>Thank you for reading this far. You have, in doing so, made my day a little warmer. If your reply is a yes, I shall look forward to that day with a silly little grin and a rather fluttery feeling in my chest. We are but strangers still, but what a charming thing it might be, to fix that.</p>
+    <img src="38838d2369fe10f9e3f03e92bde4883c.gif" class="soft-image" alt="Waving pup" />
+  </div>
 
-<footer>
-  Made with sparkles, stress, and affection by Siddhant ✨  
-</footer>
-
-<!-- Reveal on scroll + Confetti -->
-<script>
-  const sections = document.querySelectorAll('.reveal');
-  const images = document.querySelectorAll('.soft-image');
-
-  function revealOnScroll() {
-    const trigger = window.innerHeight * 0.85;
-    sections.forEach(sec => {
-      if (sec.getBoundingClientRect().top < trigger) sec.classList.add('visible');
-    });
-    images.forEach(img => {
-      if (img.getBoundingClientRect().top < trigger) img.classList.add('visible');
-    });
-  }
-
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll();
-
-  function sayYes() {
-    document.getElementById("yesResponse").style.display = "block";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    confetti();
-  }
-
-  // Confetti 🎊
-  function confetti() {
-    for (let i = 0; i < 150; i++) {
-      let conf = document.createElement("div");
-      conf.style.position = "fixed";
-      conf.style.zIndex = 999;
-      conf.style.width = "6px";
-      conf.style.height = "6px";
-      conf.style.borderRadius = "50%";
-      conf.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
-      conf.style.left = `${Math.random() * 100}vw`;
-      conf.style.top = "-10px";
-      conf.style.transition = "top 3s ease-out, transform 3s ease-out";
-      document.body.appendChild(conf);
-      setTimeout(() => {
-        conf.style.top = "100vh";
-        conf.style.transform = `translateX(${(Math.random() - 0.5) * 100}px) rotate(${Math.random() * 720}deg)`;
-      }, 100);
-      setTimeout(() => conf.remove(), 4000);
+  <script>
+    let current = 1;
+    function nextScene(n) {
+      document.getElementById(`scene${current}`).classList.remove('active');
+      document.getElementById(`scene${n}`).classList.add('active');
+      current = n;
     }
-  }
-</script>
 
+    function sayYes() {
+      nextScene(7);
+      for (let i = 0; i < 30; i++) {
+        let petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.top = '-20px';
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), 10000);
+      }
+    }
+  </script>
 </body>
 </html>
